@@ -15,7 +15,7 @@ pipeline {
                 sh "terraform plan -var-file=env-${environment}/main.tfvars"
             }
         }
-        stage('Terraform Apple') {
+        stage('Terraform Apply') {
             steps {
                 sh "terraform apply -var-file=env-${environment}/main.tfvars -auto-approve"
             }
