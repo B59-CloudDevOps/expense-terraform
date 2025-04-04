@@ -2,11 +2,11 @@ pipeline {
     agent any
     options {
         ansiColor('xterm')
+        buildDiscarder(logRotator(numToKeepStr: '5'))
     }
     parameters {
         choice(name: 'environment', choices: ['dev', 'prod'], description: 'Select the environment')
     }
-    options { buildDiscarder(logRotator(numToKeepStr: '5')) }
     stages {
         stage('Terraform Init') {
             steps {
