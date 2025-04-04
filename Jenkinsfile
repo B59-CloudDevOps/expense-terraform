@@ -1,23 +1,23 @@
 pipeline {
     agent any
     parameters {
-        choice(name: 'env', choices: ['dev', 'prod'], description: 'Select the environment')
+        choice(name: 'environment', choices: ['dev', 'prod'], description: 'Select the environment')
     }
     options { buildDiscarder(logRotator(numToKeepStr: '5')) }
     stages {
         stage('Terraform Init') {
             steps {
-                sh "terraform init  -backend-config=env-${env}/state.tfvars -var-file=env-${env}/main.tfvars"
+                sh "terraform init  -backend-config=env-${environment}/state.tfvars -var-file=env-${environment}/main.tfvars"
             }
         }
         stage('Terraform Plan') {
             steps {
-                sh "terraform plan -var-file=env-${env}/main.tfvars"
+                sh "terraform plan -var-file=env-${environment}/main.tfvars"
             }
         }
         stage('Terraform Apple') {
             steps {
-                sh "terraform apply -var-file=env-${env}/main.tfvars -auto-approve"
+                sh "terraform apply -var-file=env-${environment}/main.tfvars -auto-approve"
             }
         }
     }
