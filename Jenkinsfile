@@ -7,17 +7,17 @@ pipeline {
     stages {
         stage('Terraform Init') {
             steps {
-                sh "terraform init  -backend-config=env-${environment}/state.tfvars -var-file=env-${environment}/main.tfvars"
+                sh "terraform init  -backend-config=env-${params.environment}/state.tfvars -var-file=env-${params.environment}/main.tfvars"
             }
         }
         stage('Terraform Plan') {
             steps {
-                sh "terraform plan -var-file=env-${environment}/main.tfvars"
+                sh "terraform plan -var-file=env-${params.environment}/main.tfvars"
             }
         }
         stage('Terraform Apply') {
             steps {
-                sh "terraform apply -var-file=env-${environment}/main.tfvars -auto-approve"
+                sh "terraform apply -var-file=env-${params.environment}/main.tfvars -auto-approve"
             }
         }
     }
