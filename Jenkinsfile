@@ -3,6 +3,7 @@ pipeline {
     parameters {
         choice(name: 'env', choices: ['dev', 'prod'], description: 'Select the environment')
     }
+    options { buildDiscarder(logRotator(numToKeepStr: '5')) }
     stages {
         stage('Terraform Init') {
             steps {
