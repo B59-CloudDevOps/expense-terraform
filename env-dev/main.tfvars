@@ -1,7 +1,7 @@
 env     = "dev"
 zone_id = "Z08061862LBZAM174JIHO"
 
-components" = {
+components = {
   mysql = {
     instance_type  = "t3.micro"
     name           = "mysql"
