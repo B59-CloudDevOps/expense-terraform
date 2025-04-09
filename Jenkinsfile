@@ -16,17 +16,17 @@ pipeline {
             steps {
                 sh "terraform --version"
                 sh "rm -rf .terraform*"
-                sh "terraform init  -backend-config=env-${params.environment}/state.tfvars -var-file=env-${params.environment}/main.tfvars -var token=${vault_token}"
+                sh "terraform init  -backend-config=env-${params.environment}/state.tfvars -var-file=env-${params.environment}/main.tfvars -var token=${vault_token} -var ssh_user=${ssh_user} -var ssh_pass=${ssh_pass}"
             }
         }
         stage('Terraform Plan') {
             steps {
-                sh "terraform plan -var-file=env-${params.environment}/main.tfvars -var token=${vault_token}"
+                sh "terraform plan -var-file=env-${params.environment}/main.tfvars -var token=${vault_token} -var ssh_user=${ssh_user} -var ssh_pass=${ssh_pass}"
             }
         }
         stage('Terraform Apply') {
             steps {
-                sh "terraform ${params.action} -var-file=env-${params.environment}/main.tfvars -var token=${vault_token} -auto-approve"
+                sh "terraform ${params.action} -var-file=env-${params.environment}/main.tfvars -var token=${vault_token} -var ssh_user=${ssh_user} -var ssh_pass=${ssh_pass} -auto-approve"
             }
         }
     }
