@@ -8,8 +8,6 @@ module "frontend" {
   port_no        = var.components["frontend"]["port_no"]
   port_no_of_ssh = var.components["frontend"]["port_no_of_ssh"]
   token          = var.token
-  ssh_user       = var.ssh_user
-  ssh_pass       = var.ssh_pass
 }
 
 module "backend" {
@@ -22,8 +20,6 @@ module "backend" {
   port_no        = var.components["backend"]["port_no"]
   port_no_of_ssh = var.components["backend"]["port_no_of_ssh"]
   token          = var.token
-  ssh_user       = var.ssh_user
-  ssh_pass       = var.ssh_pass
 }
 
 module "mysql" {
@@ -35,8 +31,6 @@ module "mysql" {
   port_no        = var.components["mysql"]["port_no"]
   port_no_of_ssh = var.components["mysql"]["port_no_of_ssh"]
   token          = var.token
-  ssh_user       = var.ssh_user
-  ssh_pass       = var.ssh_pass
 }
 
 
