@@ -25,4 +25,4 @@ components = {
   }
 }
 
-prometheus_server = ["prometheus.clouding-app.shop"]
+prometheus_server = ["prometheus.clouding-app.shop/32"]
