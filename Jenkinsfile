@@ -3,6 +3,7 @@ pipeline {
     options {
         ansiColor('xterm')
         buildDiscarder(logRotator(numToKeepStr: '5'))
+        disableConcurrentBuilds()
     }
     parameters {
         choice(name: 'environment', choices: ['dev', 'prod'], description: 'Select the environment')
