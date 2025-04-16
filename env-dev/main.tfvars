@@ -1,5 +1,6 @@
-env     = "dev"
-zone_id = "Z08061862LBZAM174JIHO"
+env                      = "dev"
+zone_id                  = "Z08061862LBZAM174JIHO"
+port_no_of_node_exporter = "9100"
 
 components = {
   mysql = {
