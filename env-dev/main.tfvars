@@ -23,3 +23,5 @@ components = {
     port_no_of_ssh = "22"
   }
 }
+
+prometheus_server = ["prometheus.clouding-app.shop"]
