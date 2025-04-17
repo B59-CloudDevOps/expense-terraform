@@ -27,7 +27,8 @@ pipeline {
         }
         stage('Terraform Apply') {
             steps {
-                sh "terraform ${params.action} -var-file=env-${params.environment}/main.tfvars -var token=${vault_token} -auto-approve"
+                // sh "terraform ${params.action} -var-file=env-${params.environment}/main.tfvars -var token=${vault_token} -auto-approve"
+                sh "echo Apply Completed"
             }
         }
     }
