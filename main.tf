@@ -13,7 +13,7 @@ module "frontend" {
 }
 
 module "backend" {
-  # depends_on               = [module.mysql]
+  depends_on               = [module.mysql]
   source                   = "git::https://github.com/B59-CloudDevOps/tf-module-app.git"
   env                      = var.env
   zone_id                  = var.zone_id
@@ -27,7 +27,6 @@ module "backend" {
 }
 
 module "mysql" {
-  depends_on               = [module.backend]
   source                   = "git::https://github.com/B59-CloudDevOps/tf-module-app.git"
   env                      = var.env
   zone_id                  = var.zone_id
